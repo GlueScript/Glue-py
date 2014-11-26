@@ -10,9 +10,9 @@ class Command:
         self.endpoint = endpoint
         self.method = method
 
-    def endpoint():
+    def getEndpoint(self):
         return self.endpoint
 
-    def method():
+    def getMethod(self):
         return self.method
 
