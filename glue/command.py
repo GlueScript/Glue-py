@@ -2,9 +2,9 @@
 
 class Command:
     
-    endpoint = '';
+    endpoint = ''
 
-    method = '';
+    method = ''
 
     def __init__(self, endpoint, method):
         self.endpoint = endpoint

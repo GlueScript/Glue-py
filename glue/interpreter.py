@@ -1,8 +1,10 @@
 # -*- coding: utf-8 -*-
 
+from .command import Command
+
 class Interpreter:
     
-    commands = []
+    commands = None
     
     script = ''
 
@@ -14,4 +16,35 @@ class Interpreter:
         containing endpoint and method
     """
     def next(self):
-        return False
+        'if comands is null then parse script'
+        if (self.commands == None):
+            self.commands = []
+            self.runParser()
+
+        return self.commands[0]
+
+    def runParser(self):
+        tokens = self.script.split(' ')
+        ' iterate over tokens creating Commands '
+        ' expect sequence to be method endpoint or just endpoint in which case method is GET'
+        method = endpoint = None
+        for token in tokens:
+            if (method == None):
+                if (self.isOperator(token)):
+                    method = self.getMethod(token)
+                else:
+                    method = 'GET'
+            elif (endpoint == None):
+                endpoint = token
+            else:
+                command = Command(endpoint, method)
+                self.commands.append(command)
+                method = endpoint = None
+
+
+    def isOperator(self, token):
+        return token[0] == '>'
+
+    def getMethod(self, token):
+        if (token == '>>'):
+            return 'POST'

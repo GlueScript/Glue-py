@@ -15,7 +15,7 @@ class TestInterpreter(unittest.TestCase):
 
     """ test that calling next returns a Command """
     def testNextReturnsACommand(self):
-        script = 'http://endpoint.com/thing'
+        script = 'http://endpoint.com/thing >> http://service.net/'
         interpreter = Interpreter(script)
         command = interpreter.next()
         self.assertTrue(isinstance(command, Command))
