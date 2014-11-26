@@ -7,6 +7,8 @@ class Interpreter:
     commands = None
     
     script = ''
+    
+    index = 0
 
     def __init__(self, script):
         self.script = script
@@ -21,7 +23,10 @@ class Interpreter:
             self.commands = []
             self.runParser()
 
-        return self.commands[0]
+        index = self.index
+        self.index += 1
+        if (index <= len(self.commands)):
+            return self.commands[index]
 
     def runParser(self):
         tokens = self.script.split(' ')
@@ -37,11 +42,11 @@ class Interpreter:
                     method = 'GET'
             elif (endpoint == None):
                 endpoint = token
-            else:
+            
+            if (method and endpoint):
                 command = Command(endpoint, method)
                 self.commands.append(command)
                 method = endpoint = None
-
 
     def isOperator(self, token):
         return token[0] == '>'

@@ -27,3 +27,8 @@ class TestInterpreter(unittest.TestCase):
         self.assertTrue(isinstance(result, Command))
         self.assertTrue(result.getMethod() == 'GET')
         self.assertTrue(result.getEndpoint() == 'http://endpoint.com/thing')
+
+        result = interpreter.next()
+        self.assertTrue(isinstance(result, Command))
+        self.assertTrue(result.getMethod() == 'POST')
+        self.assertTrue(result.getEndpoint() == 'http://service.net/')
