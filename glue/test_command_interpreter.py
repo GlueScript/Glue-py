@@ -2,9 +2,9 @@
 # integration test case of parser
 
 import unittest
-from .command_interpreter import CommandInterpreter
+from .interpreter import Interpreter
 
-class TestCommandInterpreter(unittest.TestCase):
+class TestInterpreter(unittest.TestCase):
 
     def setUp(self):
         """ init test fixtures """
@@ -15,5 +15,5 @@ class TestCommandInterpreter(unittest.TestCase):
     """ test that calling next returns a Command """
     def testNextReturnsACommand(self):
         script = 'http://endpoint.com/thing'
-        interpreter = CommandInterpreter(script)
+        interpreter = Interpreter(script)
         command = interpreter.next()

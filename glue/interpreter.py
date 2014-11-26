@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-class CommandInterpreter:
+class Interpreter:
     
     commands = [];
     
@@ -10,7 +10,7 @@ class CommandInterpreter:
         self.script = script;
     
     """ 
-        return the next 'command' ie request to be made
+        return the next Command ie. request to be made
         containing endpoint and method
     """
     def next(self):
