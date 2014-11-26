@@ -27,7 +27,10 @@ class Interpreter:
         self.index += 1
         if (index <= len(self.commands)):
             return self.commands[index]
-
+    
+    """
+        replace with a Parser class, a Tokeniser and a Token class
+    """
     def runParser(self):
         tokens = self.script.split(' ')
         ' iterate over tokens creating Commands '
