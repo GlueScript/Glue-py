@@ -13,5 +13,5 @@ class CommandInterpreter:
         return the next 'command' ie request to be made
         containing endpoint and method
     """
-    def nextCommand(self):
+    def next(self):
         return False
