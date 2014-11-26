@@ -7,12 +7,12 @@ class Command:
     method = '';
 
     def __init__(self, endpoint, method):
-        self.endpoint = endpoint;
-        self.method = method;
+        self.endpoint = endpoint
+        self.method = method
 
     def endpoint():
-        return self.endpoint;
+        return self.endpoint
 
     def method():
-        return self.method;
+        return self.method
 

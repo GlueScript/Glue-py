@@ -2,12 +2,12 @@
 
 class Interpreter:
     
-    commands = [];
+    commands = []
     
-    script = '';
+    script = ''
 
     def __init__(self, script):
-        self.script = script;
+        self.script = script
     
     """ 
         return the next Command ie. request to be made

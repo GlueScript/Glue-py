@@ -3,6 +3,7 @@
 
 import unittest
 from .interpreter import Interpreter
+from .command import Command
 
 class TestInterpreter(unittest.TestCase):
 
@@ -17,3 +18,4 @@ class TestInterpreter(unittest.TestCase):
         script = 'http://endpoint.com/thing'
         interpreter = Interpreter(script)
         command = interpreter.next()
+        self.assertTrue(isinstance(command, Command))
