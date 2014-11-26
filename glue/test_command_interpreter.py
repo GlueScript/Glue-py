@@ -2,7 +2,7 @@
 # integration test case of parser
 
 import unittest
-from ..glue.command_interpreter import CommandInterpreter
+from .command_interpreter import CommandInterpreter
 
 class TestCommandInterpreter(unittest.TestCase):
 
