@@ -33,6 +33,7 @@ class Interpreter:
                 if (self.isOperator(token)):
                     method = self.getMethod(token)
                 else:
+                    endpoint = token
                     method = 'GET'
             elif (endpoint == None):
                 endpoint = token

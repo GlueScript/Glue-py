@@ -17,5 +17,13 @@ class TestInterpreter(unittest.TestCase):
     def testNextReturnsACommand(self):
         script = 'http://endpoint.com/thing >> http://service.net/'
         interpreter = Interpreter(script)
-        command = interpreter.next()
-        self.assertTrue(isinstance(command, Command))
+        result = interpreter.next()
+        self.assertTrue(isinstance(result, Command))
+
+    def testNextReturnsAllCommands(self):
+        script = 'http://endpoint.com/thing >> http://service.net/'
+        interpreter = Interpreter(script)
+        result = interpreter.next()
+        self.assertTrue(isinstance(result, Command))
+        self.assertTrue(result.getMethod() == 'GET')
+        self.assertTrue(result.getEndpoint() == 'http://endpoint.com/thing')
