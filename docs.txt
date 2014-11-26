@@ -1,0 +1,11 @@
+First implementation
+
+uri >> service
+
+Make a GET request to uri with Accept: application/json
+POST the response body to service with the same accept header and the correct Content-Type
+print the response
+
+uri >> service indicates POST the response body from GET uri to service
+>+ indicates PUT to 
+>- indicates DELETE
