@@ -13,24 +13,26 @@ class Exe:
         self.interpreter = interpreter    
     
     def run(self):
-        response = body = None
+        response = None
         command = self.interpreter.next()
         while (command):
-            if (response):
-                body = response.text
-
-            response = self.sendRequest(command, body)
-            print response.text
+            response = self.sendRequest(command, response)
             command = self.interpreter.next()
 
         return response.text
 
-    def sendRequest(self, command, body):
-        print 'sending request ', command.getMethod(), command.getEndpoint()
+    def sendRequest(self, command, response):
+        body = None
+        if (response):
+            print response.headers
+            body = response.text
+
+        print 'sending request ', command.getMethod(), command.getEndpoint(), body
 
         if (command.getMethod() == 'GET'):
             return requests.get(command.getEndpoint())
         elif (command.getMethod() == 'POST'):
-            return requests.post(command.getEndpoint(), body)
+            headers = {'content-type': response.headers['Content-Type']}
+            return requests.post(command.getEndpoint(), body, headers=headers)
         
         return None 
