@@ -25,7 +25,7 @@ class Interpreter:
 
         index = self.index
         self.index += 1
-        if (index <= len(self.commands)):
+        if (index < len(self.commands)):
             return self.commands[index]
     
     """
