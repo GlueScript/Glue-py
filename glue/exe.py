@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 
+import requests
+
 """
  Executes a script
 """
@@ -11,13 +13,24 @@ class Exe:
         self.interpreter = interpreter    
     
     def run(self):
-        response = None
+        response = body = None
         command = self.interpreter.next()
         while (command):
-            response = self.sendRequest(command, response)
+            if (response):
+                body = response.text
+
+            response = self.sendRequest(command, body)
+            print response.text
             command = self.interpreter.next()
 
-        return response
+        return response.text
 
     def sendRequest(self, command, body):
+        print 'sending request ', command.getMethod(), command.getEndpoint()
+
+        if (command.getMethod() == 'GET'):
+            return requests.get(command.getEndpoint())
+        elif (command.getMethod() == 'POST'):
+            return requests.post(command.getEndpoint(), body)
+        
         return None 
