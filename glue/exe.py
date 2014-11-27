@@ -24,7 +24,6 @@ class Exe:
     def sendRequest(self, command, response):
         body = None
         if (response):
-            print response.headers
             body = response.text
 
         print 'sending request ', command.getMethod(), command.getEndpoint(), body
